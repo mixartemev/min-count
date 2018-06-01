@@ -1,7 +1,7 @@
 const http = require('http');
 let cnt = [];
 
-http.createServer(function (req, res) {
+http.createServer((req, res) => {
     switch (req.url){
         case '/':
             fresh();
@@ -16,13 +16,13 @@ http.createServer(function (req, res) {
     }
 }).listen(3000);
 
-function fresh() {
+fresh = () => {
     let i = 0;
     while (cnt[i] < Date.now() - 60*1000){
         i++;
     }
     cnt.splice(0, i);
-}
+};
 
 ////for ajax update
 // setInterval(function () {
