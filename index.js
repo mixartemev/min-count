@@ -23,8 +23,3 @@ fresh = () => {
     }
     cnt.splice(0, i);
 };
-
-////for ajax update
-// setInterval(function () {
-//     fresh()
-// }, 1000);
