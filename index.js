@@ -4,7 +4,7 @@ let cnt = [];
 http.createServer((req, res) => {
     switch (req.url){
         case '/':
-            fresh();
+            cnt = cnt.filter(visitTime => visitTime > Date.now() - 60*1000);
             cnt.push(Date.now());
             res.end('views/min: ' + cnt.length);
             console.log(cnt);
@@ -15,16 +15,3 @@ http.createServer((req, res) => {
             res.end('Not found');
     }
 }).listen(3000);
-
-fresh = () => {
-    let i = 0;
-    while (cnt[i] < Date.now() - 60*1000){
-        i++;
-    }
-    cnt.splice(0, i);
-};
-
-////for ajax update
-// setInterval(function () {
-//     fresh()
-// }, 1000);
