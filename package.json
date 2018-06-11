@@ -1,7 +1,11 @@
 {
   "name": "min-count",
   "version": "0.0.1",
+  "description": "Count views per minute",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "author": "artemiev",
   "dependencies": {}
 }

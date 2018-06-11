@@ -1,13 +1,25 @@
-const http = require('http');
-let cnt = [];
+const [http, fresh] = [
+    require('http'),
+    //fresh count closure
+    () => {
+        let visits = [];
+        return () => {
+            let i = 0;
+            //find first index, whos timestamp older 1min
+            while (visits[i] < Date.now() - 10*1000) { i++ }
+            visits.splice(0, i);
+            visits.push(Date.now());
+            return visits.length;
+        }
+    }
+];
+
+const count = fresh();
 
 http.createServer((req, res) => {
     switch (req.url){
         case '/':
-            fresh();
-            cnt.push(Date.now());
-            res.end('views/min: ' + cnt.length);
-            console.log(cnt);
+            res.end('views/min: ' + count());
             break;
 
         default:
@@ -15,11 +27,3 @@ http.createServer((req, res) => {
             res.end('Not found');
     }
 }).listen(3000);
-
-fresh = () => {
-    let i = 0;
-    while (cnt[i] < Date.now() - 60*1000){
-        i++;
-    }
-    cnt.splice(0, i);
-};
