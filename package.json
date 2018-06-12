@@ -2,10 +2,7 @@
   "name": "min-count",
   "version": "0.0.2",
   "description": "Count views per minute. Filter version",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
+  "main": "public/app.js",
   "author": "artemiev",
   "dependencies": {}
 }
