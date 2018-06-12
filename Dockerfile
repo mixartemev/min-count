@@ -1,6 +1,6 @@
 FROM node:alpine
 MAINTAINER Mike Artemiev <mixartemev@gmail.com>
 WORKDIR /usr/src/app
-COPY public .
+COPY app.js ./
 EXPOSE 3000
-CMD ["node", "public/app.js"]
+CMD ["node", "app.js"]

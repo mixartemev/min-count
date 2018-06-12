@@ -3,6 +3,9 @@
   "version": "0.0.2",
   "description": "Count views per minute. Filter version",
   "main": "public/app.js",
+  "scripts": {
+    "start": "node public/app.js"
+  },
   "author": "artemiev",
   "dependencies": {}
 }
